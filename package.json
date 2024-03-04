@@ -19,7 +19,9 @@
     "publish:win": "electron-forge publish --platform win32",
     "publish:linux": "electron-forge publish --platform linux",
     "publish:mac": "electron-forge publish --platform darwin",
-    "lint": "eslint --ext .ts,.tsx ."
+    "lint": "eslint --ext .ts,.tsx .",
+    "prepare": "husky",
+    "commitlint": "commitlint --edit"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.0.3",
@@ -48,9 +50,10 @@
     "eslint-plugin-prettier": "latest",
     "eslint-plugin-promise": "latest",
     "eslint-plugin-react": "latest",
-    "prettier": "^3.1.1",
     "fork-ts-checker-webpack-plugin": "^7.3.0",
+    "husky": "^9.0.11",
     "node-loader": "^2.0.0",
+    "prettier": "^3.1.1",
     "style-loader": "^3.3.4",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
