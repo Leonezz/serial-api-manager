@@ -1,0 +1,10 @@
+{
+    "files.eol": "\n",
+    "files.autoSave": "afterDelay",
+    "editor.fontFamily": "CaskaydiaCove Nerd Font Mono",
+    "editor.fontSize": 18,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "terminal.integrated.automationProfile.windows": {
+        "path": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+    }
+}

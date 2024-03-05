@@ -1,5 +1,19 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
+import { SerialPort } from 'electron'
+import React from 'react'
+import Home from './pages/home'
+import { TooltipProvider } from '@shadcn/components/ui/tooltip'
 
-const root = createRoot(document.body);
-root.render(<h2>Hello from React!</h2>);
+const App = () => {
+  const onBtnClick = async () => {
+    const ports = navigator.serial.getPorts()
+    console.log(navigator.serial)
+    ports.then((p) => console.log(p))
+  }
+  return (
+    <TooltipProvider>
+      <Home />
+    </TooltipProvider>
+  )
+}
+
+export default App
