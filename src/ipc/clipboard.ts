@@ -1,3 +1,0 @@
-import { clipboard } from 'electron'
-
-

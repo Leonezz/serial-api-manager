@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "allowJs": true,
-    "module": "commonjs",
+    "module": "CommonJS",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "noImplicitAny": true,
@@ -14,7 +14,8 @@
     "jsx": "react-jsx",
     "paths": {
       "*": ["node_modules/*"],
-      "@shadcn/*": ["./src/shadcn/*"]
+      "@shadcn/*": ["./src/shadcn/*"],
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src/**/*"],

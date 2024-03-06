@@ -17,7 +17,8 @@ export const rendererConfig: Configuration = {
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.css'],
     alias: {
-      '@shadcn': path.resolve(__dirname, './src/shadcn')
+      '@shadcn': path.resolve(__dirname, './src/shadcn'),
+      '@': path.resolve(__dirname, './src')
     }
   }
 }

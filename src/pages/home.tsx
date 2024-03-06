@@ -155,13 +155,16 @@ const Home = () => {
       <ResizableHandle withHandle />
       <ResizablePanel
         defaultSize={defaultLayout[1]}
+        minSize={30}
         className='p-2 flex flex-col'
       >
         <MessageList />
-        <MessageInput />
+        <footer>
+          <MessageInput />
+        </footer>
       </ResizablePanel>
       <ResizableHandle withHandle />
-      <ResizablePanel defaultSize={defaultLayout[2]}>
+      <ResizablePanel defaultSize={defaultLayout[2]} minSize={20}>
         <div>this is config panel</div>
       </ResizablePanel>
     </ResizablePanelGroup>

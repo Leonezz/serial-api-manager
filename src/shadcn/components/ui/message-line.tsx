@@ -1,6 +1,13 @@
 import { cn } from '@shadcn/lib/utils'
 import { Button } from './button'
-import { Copy, CopyCheck, HdmiPort, Laptop } from 'lucide-react'
+import {
+  ArrowDown01,
+  ArrowUp01,
+  Copy,
+  CopyCheck,
+  HdmiPort,
+  Laptop
+} from 'lucide-react'
 import { Avatar, AvatarImage, AvatarFallback } from './avatar'
 import { useState } from 'react'
 import { Badge } from './badge'
@@ -10,13 +17,16 @@ import {
   AccordionItem,
   AccordionTrigger
 } from './accordion'
+import { Moment } from 'moment'
+import { Separator } from './separator'
 
 interface MessageLineProps {
   content: string
   placement: 'left' | 'right'
+  time: Moment
 }
 
-const MessageLine = ({ content, placement }: MessageLineProps) => {
+const MessageLine = ({ content, placement, time }: MessageLineProps) => {
   const [copied, setCopied] = useState(false)
 
   const onCopyMessage = () => {
@@ -26,47 +36,36 @@ const MessageLine = ({ content, placement }: MessageLineProps) => {
       setCopied(false)
     }, 2000)
   }
+  const alignLeft = placement === 'left'
   return (
-    // <AccordionItem value={content}>
-    //   <AccordionTrigger>{content}</AccordionTrigger>
-    //   <AccordionContent>{content}</AccordionContent>
-    // </AccordionItem>
-    <div
-      className={cn(
-        'w-full flex gap-1 justify-between py-2',
-        placement === 'left' ? 'flex-row' : 'flex-row-reverse'
-      )}
-    >
-      <div
+    <AccordionItem value={content}>
+      <AccordionTrigger
         className={cn(
-          'w-full flex gap-1',
-          placement === 'left' ? 'flex-row' : 'flex-row-reverse'
+          'gap-2 flex',
+          alignLeft ? 'flex-row' : 'flex-row-reverse'
         )}
       >
-        <Avatar>
-          <AvatarFallback>
-            {placement === 'left' ? <HdmiPort /> : <Laptop />}
-          </AvatarFallback>
-        </Avatar>
-        <Badge
-          variant={placement === 'left' ? 'secondary' : 'outline'}
-          className={cn(
-            'max-w-[3/4] flex flex-row self-center text-lg p-2',
-            placement === 'left' ? 'justify-start' : 'justify-end'
-          )}
-        >
-          {content}
+        <Badge variant='secondary' className='min-w-fit text-neutral-500 gap-2'>
+          {alignLeft ? <ArrowDown01 size={14} /> : <ArrowUp01 size={14} />}
+          {time.calendar()}
         </Badge>
-      </div>
-      <Button
-        variant='ghost'
-        size='icon'
-        className='p-0'
-        onClick={onCopyMessage}
-      >
-        {copied ? <CopyCheck size={14} /> : <Copy size={14} />}
-      </Button>
-    </div>
+        <span className='w-full line-clamp-1 text-start'>{content}</span>
+      </AccordionTrigger>
+      <AccordionContent className='bg-neutral-100 rounded-lg px-2 gap-1 flex flex-col'>
+        <div className='flex flex-row align-middle h-fit'>
+          <Button
+            variant='ghost'
+            size='icon'
+            className='p-0'
+            onClick={onCopyMessage}
+          >
+            {copied ? <CopyCheck size={14} /> : <Copy size={14} />}
+          </Button>
+        </div>
+        <Separator />
+        <span className='break-all'>{content.hexEncode()}</span>
+      </AccordionContent>
+    </AccordionItem>
   )
 }
 
